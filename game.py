@@ -6,6 +6,9 @@ game_results = []
 def calculate_monster_attack(attack_min, attack_max):
     return randint(attack_min, attack_max)
 
+def calculate_player_attack(attack_min, attack_max):
+    return randint(attack_min, attack_max)
+
 def game_ends(winner_name):
     print(f'{winner_name} won the game')   
 
@@ -14,7 +17,7 @@ def game_ends(winner_name):
 while game_running == True:
     counter = 0
     new_round = True
-    player = {'name': 'Manuel', 'attack': 13, 'heal': 16, 'health': 100}
+    player = {'name': 'Manuel', 'attack_min': 12, 'attack_max': 18, 'frost': 14, 'heal': 16, 'health': 100}
     monster = {'name': 'Thanos', 'attack_min': 10, 'attack_max': 20, 'health': 100}
 
     print('---' * 7)
@@ -34,14 +37,15 @@ while game_running == True:
         print('---' * 7)
         print('Please select action')
         print('1) Attack')
-        print('2) Heal')
-        print('3) Exit')
-        print('4) Show Results')
+        print('2) Frost') 
+        print('3) Heal')
+        print('4) Exit')
+        print('5) Show Results')
 
         player_choice =input()
 
         if player_choice == '1':
-            monster['health'] = monster['health'] - player['attack']
+            monster['health'] = monster['health'] - calculate_player_attack(player['attack_min'], player['attack_max'])
             if monster['health'] <= 0:
                 player_won = True
 
@@ -51,18 +55,28 @@ while game_running == True:
                     monster_won = True 
 
         elif player_choice == '2':
+                monster['health'] = monster['health'] - player['frost']
+                if monster['health'] <= 0:
+                    player_won = True
+                
+                else: 
+                    player['health'] = player['health'] - calculate_monster_attack(monster['attack_min'], monster['attack_max'])
+                    if player['health'] <= 0:
+                        monster_won = True
+
+        elif player_choice == '3':
             player['health'] = player['health'] + player['heal']
 
             player['health'] = player['health'] -  calculate_monster_attack(monster['attack_min'], monster['attack_max'])   
             if player['health'] <= 0:
                     monster_won = True 
 
-        elif player_choice == '3': 
+        elif player_choice == '4': 
             new_round = False
             game_running = False
 
         
-        elif player_choice == '4': 
+        elif player_choice == '5': 
             for player_stat in game_results:
                 print(player_stat)
             
