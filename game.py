@@ -19,6 +19,7 @@ while game_running == True:
     new_round = True
     player = {'name': 'Manuel', 'attack_min': 12, 'attack_max': 18, 'frost': 14, 'heal': 16, 'health': 100}
     monster = {'name': 'Thanos', 'attack_min': 10, 'attack_max': 20, 'health': 100}
+    stats_of_player = 'Attack: 12 to 18, frost: 14'
 
     print('---' * 7)
     print('Enter Player Name')
@@ -40,7 +41,8 @@ while game_running == True:
         print('2) Frost') 
         print('3) Heal')
         print('4) Exit')
-        print('5) Show Results')
+        print('5) Show Game Results')
+        print('6) Show Player Stats')
 
         player_choice =input()
 
@@ -80,6 +82,9 @@ while game_running == True:
             for player_stat in game_results:
                 print(player_stat)
             
+        elif player_choice == '6':
+             print(stats_of_player)
+
         else :
             print("Invalid Input")
 
