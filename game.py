@@ -20,6 +20,17 @@ while game_running == True:
     player = {'name': 'Manuel', 'attack_min': 12, 'attack_max': 18, 'frost': 14, 'heal': 16, 'health': 100}
     monster = {'name': 'Thanos', 'attack_min': 10, 'attack_max': 20, 'health': 100}
     stats_of_player = 'Attack: 12 to 18, frost: 14'
+    title_screen = {'play': 'play'}
+
+    print('This is a Tale of a hero who goal is to save the world')
+    print('                   Hit anykey to play '                )
+    title_screen['play'] = input()
+    
+
+
+    print('---'* 20)
+    print('Made by NoblexZone')
+    
 
     print('---' * 7)
     print('Enter Player Name')
